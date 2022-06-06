@@ -1,4 +1,6 @@
 import * as React from "react";
+import { useContext } from "react";
+import AuthContext from "../stores/authcontext";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -13,7 +15,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Login"];
+const settings = ["Profile", "Account", "Dashboard", "Log in", "log out"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -37,6 +39,8 @@ const ResponsiveAppBar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const { user, login, logout } = useContext(AuthContext);
 
   return (
     <AppBar
@@ -121,13 +125,19 @@ const ResponsiveAppBar = () => {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Link href={setting}>
+              {settings.map((setting) =>
+                setting === "Log in" ? (
+                  <MenuItem key={setting} onClick={login}>
                     <Typography textAlign="center">{setting}</Typography>
-                  </Link>
-                </MenuItem>
-              ))}
+                  </MenuItem>
+                ) : (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Link href={setting}>
+                      <Typography textAlign="center">{setting}</Typography>
+                    </Link>
+                  </MenuItem>
+                )
+              )}
             </Menu>
           </Box>
         </Toolbar>

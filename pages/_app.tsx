@@ -6,6 +6,8 @@ import createEmotionCache from "../src/createEmotionCache";
 import theme from "../styles/theme/theme";
 import "../styles/globals.css";
 import Layout from "../components/layout";
+import { AuthContextProvider } from "../stores/authcontext";
+
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
@@ -18,14 +20,16 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ThemeProvider>
-    </CacheProvider>
+    <AuthContextProvider>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </ThemeProvider>
+      </CacheProvider>
+    </AuthContextProvider>
   );
 };
 

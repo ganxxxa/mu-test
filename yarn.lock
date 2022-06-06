@@ -535,6 +535,11 @@
   "resolved" "https://registry.npmjs.org/@types/json5/-/json5-0.0.29.tgz"
   "version" "0.0.29"
 
+"@types/netlify-identity-widget@^1.9.3":
+  "integrity" "sha512-xAzPO2TM8Z+gVZ/3wXUM5WIKWEE0TG+uD6u/4Dq0tgA+bwrb+qyIqhlaIyJZcXN6MienvYxUH3DKUSYb8evfYA=="
+  "resolved" "https://registry.npmjs.org/@types/netlify-identity-widget/-/netlify-identity-widget-1.9.3.tgz"
+  "version" "1.9.3"
+
 "@types/node@17.0.40":
   "integrity" "sha512-UXdBxNGqTMtm7hCwh9HtncFVLrXoqA3oJW30j6XWp5BH/wu3mVeaxo7cq5benFdBw34HB3XDT2TRPI7rXZ+mDg=="
   "resolved" "https://registry.npmjs.org/@types/node/-/node-17.0.40.tgz"
