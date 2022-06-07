@@ -15,7 +15,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Log in", "log out"];
+const settings = ["Profile", "Account", "Dashboard", "Log out"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -101,7 +101,9 @@ const ResponsiveAppBar = () => {
               textDecoration: "none",
             }}
           >
-            just do it
+            {user
+              ? "hello" + "  " + user["user_metadata"]["full_name"]
+              : "please log the fuck in"}
           </Typography>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
@@ -126,17 +128,24 @@ const ResponsiveAppBar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) =>
-                setting === "Log in" ? (
-                  <MenuItem key={setting} onClick={login}>
-                    <Typography textAlign="center">{setting}</Typography>
-                  </MenuItem>
-                ) : (
-                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                    <Link href={setting}>
+                user ? (
+                  setting === "Log out" ? (
+                    <MenuItem key={setting} onClick={logout}>
                       <Typography textAlign="center">{setting}</Typography>
-                    </Link>
-                  </MenuItem>
-                )
+                    </MenuItem>
+                  ) : (
+                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                      <Link href={setting}>
+                        <Typography textAlign="center">{setting}</Typography>
+                      </Link>
+                    </MenuItem>
+                  )
+                ) : null
+              )}
+              {!user && (
+                <MenuItem onClick={login}>
+                  <Typography textAlign="center">log in</Typography>
+                </MenuItem>
               )}
             </Menu>
           </Box>
