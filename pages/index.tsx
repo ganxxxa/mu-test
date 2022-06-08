@@ -25,7 +25,6 @@ interface yow {
   data: ProductType[];
 }
 export default function Home({ data }: yow) {
-  console.log(data);
   return (
     <ThemeProvider theme={theme}>
       <Box className={styles.container}>
