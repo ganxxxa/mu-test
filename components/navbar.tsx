@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import AuthContext from "../stores/authcontext";
+import AuthContext from "../services/authcontext";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -10,12 +10,11 @@ import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
 import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Log out"];
+const pages = ["Home"];
+const settings = ["Profile", "Product", "Dashboard", "Log out"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
@@ -49,7 +48,7 @@ const ResponsiveAppBar = () => {
       style={{ background: "transparent", color: "black ", boxShadow: "none" }}
     >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar>
           <Box sx={{ flexGrow: 1, display: "flex" }}>
             <IconButton
               size="large"
@@ -79,11 +78,11 @@ const ResponsiveAppBar = () => {
                 display: "block",
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+              <MenuItem onClick={handleCloseNavMenu}>
+                <Link href="/">
+                  <Typography textAlign="center">Home</Typography>
+                </Link>
+              </MenuItem>
             </Menu>
           </Box>
           <Typography
@@ -103,7 +102,7 @@ const ResponsiveAppBar = () => {
           >
             {user
               ? "hello" + "  " + user["user_metadata"]["full_name"]
-              : "please log the fuck in"}
+              : "please log in"}
           </Typography>
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">

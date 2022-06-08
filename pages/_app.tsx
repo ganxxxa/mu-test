@@ -6,7 +6,7 @@ import createEmotionCache from "../src/createEmotionCache";
 import theme from "../styles/theme/theme";
 import "../styles/globals.css";
 import Layout from "../components/layout";
-import { AuthContextProvider } from "../stores/authcontext";
+import { AuthContextProvider } from "../services/authcontext";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
