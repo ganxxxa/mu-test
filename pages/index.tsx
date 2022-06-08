@@ -25,6 +25,7 @@ interface yow {
   data: ProductType[];
 }
 export default function Home({ data }: yow) {
+  console.log(data);
   return (
     <ThemeProvider theme={theme}>
       <Box className={styles.container}>
@@ -56,7 +57,7 @@ export default function Home({ data }: yow) {
   );
 }
 
-export const getServerSideProps: GetServerSideProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
   const data = await res.json();
 
