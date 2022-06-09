@@ -1,4 +1,4 @@
-import type { GetServerSideProps, GetStaticProps } from "next";
+import type { NextPage, GetStaticProps, InferGetStaticPropsType } from "next";
 import { Container, Grid } from "@mui/material";
 import theme from "../styles/theme/theme";
 import ProductCard from "../components/Product/productCard";
@@ -9,7 +9,6 @@ import { ThemeProvider } from "@mui/material/styles";
 import SearchBar from "../components/searchbar";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
-import { CssBaseline } from "@mui/material/";
 import { Box } from "@mui/system";
 
 const UseItem = styled(Paper)(({ theme }) => ({
@@ -21,10 +20,12 @@ const UseItem = styled(Paper)(({ theme }) => ({
   width: "100%",
 }));
 
-interface yow {
-  data: ProductType[];
+interface HomeProps {
+  item: ProductType[];
 }
-export default function Home({ data }: yow) {
+const Home: NextPage<HomeProps> = ({
+  data,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
     <ThemeProvider theme={theme}>
       <Box className={styles.container}>
@@ -38,8 +39,8 @@ export default function Home({ data }: yow) {
       </Box>
 
       <Grid container spacing={12} justifyContent="center">
-        {data.map((e) => (
-          <Grid key={e.id} item xs={5}>
+        {data.map((data: ProductType) => (
+          <Grid key={data.id} item xs={5}>
             <UseItem
               sx={{ my: 2 }}
               style={{
@@ -47,19 +48,19 @@ export default function Home({ data }: yow) {
                 boxShadow: "none",
               }}
             >
-              <ProductCard data={e} />
+              <ProductCard item={data} />
             </UseItem>
           </Grid>
         ))}
       </Grid>
     </ThemeProvider>
   );
-}
+};
+export default Home;
 
 export const getStaticProps: GetStaticProps = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
   const data = await res.json();
-
   return {
     props: { data },
   };

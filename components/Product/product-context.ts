@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { Tag } from "../../src/tag";
 
 export interface ProductType {
   category: string;
@@ -11,12 +12,13 @@ export interface ProductType {
     count: number;
   };
   title: string;
+  tags: Tag[];
 }
 
-export type ProductList = {
-  products: ProductType[];
-  categories: string[];
-};
+export interface ProductList {
+  ProductType: ProductType[];
+  tags: Tag[];
+}
 
 const ProductContext = createContext<ProductList | null>(null);
 

@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import { CardActions, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Box, { BoxProps } from "@mui/material/Box";
+import { ProductType } from "./product-context";
 
 function Item(props: BoxProps) {
   const { sx, ...other } = props;
@@ -21,7 +22,11 @@ function Item(props: BoxProps) {
   );
 }
 
-const ProductCard = ({ data }: any) => {
+interface CardProps {
+  item: ProductType;
+}
+
+export const ProductCard: React.FC<CardProps> = ({ item }) => {
   return (
     <Card
       sx={{ my: 3, height: 550 }}
@@ -32,8 +37,8 @@ const ProductCard = ({ data }: any) => {
     >
       <CardMedia
         component="img"
-        image={data.image}
-        alt={data.title}
+        image={item.image}
+        alt={item.title}
         sx={{ width: "100%", height: 400, borderRadius: "46px" }}
       />
       <CardContent sx={{ display: "flex" }}>
@@ -44,8 +49,8 @@ const ProductCard = ({ data }: any) => {
             flexDirection: "column",
           }}
         >
-          <Item>{data.title}</Item>
-          <Item pl={23}>${data.price} </Item>
+          <Item>{item.title}</Item>
+          <Item pl={23}>${item.price} </Item>
         </Typography>
         <CardActions sx={{ justifyContent: "flex-end" }}>
           <IconButton aria-label="add to favorites">
