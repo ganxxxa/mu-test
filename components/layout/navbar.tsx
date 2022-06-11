@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useContext } from "react";
-import AuthContext from "../services/authcontext";
+import AuthContext from "../../services/authcontext";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -14,7 +14,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 const pages = ["Home"];
-const settings = ["Profile", "Product", "Dashboard", "Log out"];
+const settings = ["Category", "Log out"];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(

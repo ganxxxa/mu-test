@@ -2,6 +2,41 @@
   padding: 0 2rem;
 }
 
+.totalAmount {
+  color: var(--clr-white);
+  margin-bottom: 0;
+  margin-right: 0;
+  font-size: 2rem;
+  color: rgb(255, 255, 255);
+}
+
+.navCenter {
+  max-width: var(--fixed-width);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navContainer {
+  display: block;
+  position: relative;
+  right: 2rem;
+}
+
+.amountContainer {
+  position: absolute;
+  top: -0.6rem;
+  right: -0.6rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--clr-primary-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .main {
   min-height: 100vh;
   padding: 4rem 0;

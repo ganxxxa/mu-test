@@ -20,7 +20,11 @@
     "**/*.ts",
     "**/*.tsx",
     "services/authcontext.tsx",
-    "services/authcontext.js"
+    "services/authcontext.js",
+    "src/cart/cartSlice.ts",
+    "components/cartItem.jsx",
+    "components/cartItem.jsx",
+    "components/cartItem.js"
   ],
   "exclude": ["node_modules"]
 }

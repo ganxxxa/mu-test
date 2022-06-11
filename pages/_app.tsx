@@ -7,6 +7,9 @@ import theme from "../styles/theme/theme";
 import "../styles/globals.css";
 import Layout from "../components/layout";
 import { AuthContextProvider } from "../services/authcontext";
+// import { Provider } from "react-redux";
+// import { store } from "../store/store";
+// import { ProductProvider } from "../store/ProductProvider";
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;
@@ -24,9 +27,11 @@ const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={lightTheme}>
           <CssBaseline />
+          {/* <ProductProvider> */}
           <Layout>
             <Component {...pageProps} />
           </Layout>
+          {/* </ProductProvider> */}
         </ThemeProvider>
       </CacheProvider>
     </AuthContextProvider>

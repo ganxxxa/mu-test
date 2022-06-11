@@ -5,10 +5,13 @@ import CardContent from "@mui/material/CardContent";
 import { CardActions, IconButton, Typography } from "@mui/material";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Box, { BoxProps } from "@mui/material/Box";
-import { ProductType } from "./product-context";
+import { useDispatch } from "react-redux";
+// import { addToCart, removeItem } from "../../src/cart/cartSlice";
+import { Product } from "../../store/productContext";
 
 function Item(props: BoxProps) {
   const { sx, ...other } = props;
+
   return (
     <Box
       sx={{
@@ -23,10 +26,11 @@ function Item(props: BoxProps) {
 }
 
 interface CardProps {
-  item: ProductType;
+  item: Product;
 }
 
 export const ProductCard: React.FC<CardProps> = ({ item }) => {
+  // const dispatch = useDispatch();
   return (
     <Card
       sx={{ my: 3, height: 550 }}
